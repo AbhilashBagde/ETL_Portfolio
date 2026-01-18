@@ -7,7 +7,7 @@ const projects = [
     title: 'NiftyStream-DE',
     description: 'Real-time stock data pipeline architecture processing live market feeds with Apache Kafka and Spark Streaming for instant analytics.',
     tech: ['Apache Kafka', 'Spark', 'Python', 'AWS'],
-    link: 'https://github.com/AbhilashBagde/NiftyStream-DE',
+    link: 'https://nifty-stream.vercel.app',
     icon: Zap,
     color: 'cyan' as const,
   },
