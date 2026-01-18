@@ -74,8 +74,13 @@ export function ProjectsSection() {
           {projects.map((project) => {
             const Icon = project.icon;
             return (
-              <motion.div key={project.title} variants={itemVariants}>
-                <GlassCard glowColor={project.color} className="h-full flex flex-col">
+              <motion.div 
+                key={project.title} 
+                variants={itemVariants}
+                onClick={() => window.open(project.link, '_blank')}
+                className="cursor-pointer"
+              >
+                <GlassCard glowColor={project.color} className="h-full flex flex-col group transition-transform hover:-translate-y-1 duration-300">
                   <div className="flex items-start justify-between mb-4">
                     <div
                       className={`p-3 rounded-lg ${
@@ -90,15 +95,17 @@ export function ProjectsSection() {
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2 rounded-lg hover:bg-muted/50 transition-colors group"
+                      // Stop propagation prevents the card click from firing when clicking just the git icon
+                      onClick={(e) => e.stopPropagation()}
+                      className="p-2 rounded-lg hover:bg-muted/50 transition-colors group/icon"
                     >
-                      <Github className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                      <Github className="w-5 h-5 text-muted-foreground group-hover/icon:text-primary transition-colors" />
                     </a>
                   </div>
 
-                  <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
+                  <h3 className="text-xl font-bold mb-3 flex items-center gap-2 group-hover:text-primary transition-colors">
                     {project.title}
-                    <ExternalLink className="w-4 h-4 text-muted-foreground" />
+                    <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
                   </h3>
 
                   <p className="text-muted-foreground text-sm mb-6 flex-grow">
